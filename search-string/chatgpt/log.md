@@ -47,3 +47,47 @@ The original two-block query is now known. A third block is proposed to increase
 
 `continue` — **not converged**. Execute proposed search 01 and provide its Scopus CSV to evaluate the change.
 
+
+
+## Iteration 1 — Scopus export of search 01
+
+**Timestamp:** 2026-11-03 (analysis date; export date not independently verified)
+
+### Search String
+
+Executed query 01:
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" ) AND TITLE-ABS-KEY ( teach* OR learn* OR student* OR instructor* OR pedagog* OR curricul* OR assess* OR feedback )
+```
+
+### Evaluation
+
+- Input: `chatgp-01.csv` (882 records, 22 columns).
+- Compared by Scopus EID to query 00 CSV: **882 retained, 3 lost, 0 new** (99.66% retention).
+- All 882 records have abstracts; no duplicate nonempty DOIs detected.
+- Literal phrase occurrences in title, abstract, or author keywords: learning analytics 775; educational data mining 121; data analytics 17; business analytics 1; generative AI 389; large language model 390; agentic 27. These are overlapping text matches, not eligibility classifications.
+- The additional education block did not materially increase specificity as measured by record count (885 → 882), and its effect on relevance has not been established.
+
+### Changes
+
+**Proposed next search string 02 (not executed):** remove the third education block and expand GenAI terminology with ChatGPT, GPT-3, GPT-4, generative agents, and retrieval-augmented generation.
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" OR ChatGPT OR "GPT-3" OR "GPT-4" OR "generative agent*" OR "retrieval augmented generation" OR "retrieval-augmented generation" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" )
+```
+
+### Rationale
+
+The education block removed only three records and yielded no new records. Broadening GenAI terminology while retaining the original domain block is a test of additional retrieval. Newly added terms are candidates for evaluation, not proof of greater recall; some (e.g. retrieval-augmented generation) may introduce non-generative or off-topic records.
+
+### Validation Results
+
+- Query 00: 885 records; query 01: 882 records.
+- Set comparison (EID): 0 new; 3 excluded; 882 shared.
+- Three excluded titles: *AutoMind: Automated Insight Discovery via Multi-Agent Navigation*; *User Profile Generation Framework Based on Large Language Model Enhanced by Dynamic and Static Knowledge Graphs*; *Comparing Human Role-Players and LLM-Simulated Clients in Online Counselling Training: An Analysis of Counselling Pat...* (title truncated here; full title remains in the source CSV).
+- Manual relevance assessment, seed-paper recall, and query 02 retrieval are pending.
+
+### Convergence Status
+
+`continue` — **NO, not converged**. Execute query 02 in Scopus and supply its CSV for evaluation.
