@@ -6,7 +6,11 @@
 
 ### Search String
 
-Not available in the supplied CSV. The exact executed query must be supplied before a revised string can be attributed to this iteration.
+Executed Scopus query (provided by the user):
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" )
+```
 
 ### Evaluation
 
@@ -14,15 +18,21 @@ Not available in the supplied CSV. The exact executed query must be supplied bef
 - Years: 2005–2027 (publication year metadata; 2027 includes future-dated records).
 - Titles, abstracts and author keywords contain the literal phrase `learning analytics` in 775 records, `educational data mining` in 124, `data analytics` in 17, and `business analytics` in 1. Counts overlap and do not establish eligibility.
 - The predominance of learning-analytics terminology warrants examining whether the query captures the *teaching and learning of Analytics* rather than primarily *analytics applied to education*.
-- The query syntax and Boolean logic cannot be audited without the exact executed search string.
+- The executed query has two blocks (GenAI/agentic AI and learning/teaching/academic analytics); there is no explicit educational-process block. The query may retrieve studies applying GenAI to educational analytics without examining teaching or learning practices.
 
 ### Changes
 
-None applied. The exact initial Scopus search string is required before proposing an executable replacement.
+**Proposed next search string (01; not executed):**
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" ) AND TITLE-ABS-KEY ( teach* OR learn* OR student* OR instructor* OR pedagog* OR curricul* OR assess* OR feedback )
+```
+
+Adds an educational-process block with teaching, learning, students, instructors, pedagogy, curricula, assessment and feedback terminology.
 
 ### Rationale
 
-Changes to Boolean blocks cannot be justified solely from the returned records without knowing which query generated them. The CSV does not establish which relevant publications were missed.
+The original two-block query is now known. A third block is proposed to increase topical specificity; however, it could exclude relevant records that omit these words in indexed fields. The CSV alone cannot establish recall.
 
 ### Validation Results
 
@@ -35,5 +45,5 @@ Changes to Boolean blocks cannot be justified solely from the returned records w
 
 ### Convergence Status
 
-`blocked` — awaiting the exact Scopus query executed for search 00. This is not evidence of convergence.
+`continue` — **not converged**. Execute proposed search 01 and provide its Scopus CSV to evaluate the change.
 
