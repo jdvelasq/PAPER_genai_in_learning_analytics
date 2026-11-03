@@ -103,3 +103,204 @@ The baseline search exhibits robust coverage of general GenAI concepts in learni
 - Excluded records: N/A.
 
 **Convergence Status:** `continue`
+
+
+## Iteration 1
+
+**Timestamp:** 2026-11-03 09:36:00 -05:00
+
+**Search String:**
+```sql
+TITLE-ABS-KEY (
+  "generative AI" OR
+  "generative artificial intelligence" OR
+  GenAI OR
+  "large language model*" OR
+  LLM OR LLMs OR
+  "foundation model*" OR
+  ChatGPT OR
+  "GPT-4*" OR
+  Claude OR
+  Gemini OR
+  LLaMA OR
+  "generative pre-trained transformer*" OR
+  "generative pretrained transformer*" OR
+  "agentic AI" OR
+  "agentic artificial intelligence" OR
+  "agentic system*" OR
+  "agentic workflow*" OR
+  "generative agent*" OR
+  "AI agent*" OR
+  "autonomous agent*" OR
+  "multi-agent system*" OR
+  "multiagent system*"
+)
+AND
+TITLE-ABS-KEY (
+  "learning analytics" OR
+  "teaching analytics" OR
+  "teacher analytics" OR
+  "classroom analytics" OR
+  "educational data mining" OR
+  "academic analytics"
+)
+```
+
+**Evaluation:**
+- **Volume & Comparison:** Retrieved 932 records from Scopus (`scopus-1.csv`).
+  - Total records: 932
+  - Retained from Iteration 0: 885 (100% retention)
+  - New records: 47 (+5.3% expansion)
+  - Excluded records: 0
+  - Unique EIDs: 932 (no duplicates)
+- **Contribution of Added Terms:**
+  - `ChatGPT` and `"GPT-4*"` contributed directly to retrieving high-relevance papers (e.g., ChatGPT-assisted codebook design in learning analytics, feasibility of ChatGPT for educational data mining, GPT-4 vision-powered observation for teacher analytics).
+  - `Gemini` contributed relevant empirical studies in learning analytics and adaptive tutoring (e.g., Gemini-powered collaborative think-pair-share, microlearning with Gemini-AI).
+  - `Claude` and `LLaMA` captured comparative studies evaluating multi-model pipelines in educational assessment.
+  - `"teacher analytics"` and `"classroom analytics"` brought critical teacher-facing publications (e.g., adaptive-constructivist drill systems with teacher analytics, edge-AI engagement detection for classroom analytics).
+- **Precision of New Retrieval:**
+  - 46 out of the 47 new records (97.9%) are topically relevant to Generative AI / Agentic AI in Learning and Teaching Analytics.
+  - Only 1 false positive was observed: a book chapter citing a historical manifesto by "Jean Claude Guédon" retrieved via bare `Claude`.
+- **Remaining Gaps:**
+  - In Agentic AI: `"agentic framework*"` is a frequent terminology variant not yet captured.
+  - In GenAI models: Earlier and upcoming GPT versions (`"GPT-3*"`, `"GPT-5*"`) and widely evaluated tools like `Copilot` remain omitted.
+  - In Analytics: `"student analytics"` represents a direct counterpart to teacher and learning analytics in institutional and higher education research.
+
+**Changes:**
+Proposed Query 02 performs a targeted incremental expansion:
+1. Add `"agentic framework*"` to complete the agentic systems/workflows set.
+2. Add `"GPT-3*"`, `"GPT-5*"`, and `Copilot` to broaden foundation model/tool coverage without commercial bias.
+3. Add `"student analytics"` to complete the learner/teacher/classroom analytics dimension.
+
+Proposed Query 02:
+```sql
+TITLE-ABS-KEY (
+  "generative AI" OR
+  "generative artificial intelligence" OR
+  GenAI OR
+  "large language model*" OR
+  LLM OR LLMs OR
+  "foundation model*" OR
+  ChatGPT OR
+  "GPT-3*" OR
+  "GPT-4*" OR
+  "GPT-5*" OR
+  Claude OR
+  Gemini OR
+  LLaMA OR
+  Copilot OR
+  "generative pre-trained transformer*" OR
+  "generative pretrained transformer*" OR
+  "agentic AI" OR
+  "agentic artificial intelligence" OR
+  "agentic system*" OR
+  "agentic workflow*" OR
+  "agentic framework*" OR
+  "generative agent*" OR
+  "AI agent*" OR
+  "autonomous agent*" OR
+  "multi-agent system*" OR
+  "multiagent system*"
+)
+AND
+TITLE-ABS-KEY (
+  "learning analytics" OR
+  "teaching analytics" OR
+  "teacher analytics" OR
+  "classroom analytics" OR
+  "student analytics" OR
+  "educational data mining" OR
+  "academic analytics"
+)
+```
+
+**Rationale:**
+The addition of model names and teaching/classroom analytics in Query 01 successfully retrieved 47 predominantly relevant documents (+5.3%). However, expanding to include `"agentic framework*"`, `"student analytics"`, and additional prominent model references (`"GPT-3*"`, `"GPT-5*"`, `Copilot`) tests whether residual recall gaps remain before declaring operational convergence.
+
+**Validation Results:**
+- Iteration 1.
+- Total retrieved: 932 records.
+- New records: 47.
+- Retained records: 885.
+- Excluded records: 0.
+
+**Convergence Status:** `continue`
+
+
+## Iteration 2
+
+**Timestamp:** 2026-11-03 09:42:00 -05:00
+
+**Search String:**
+```sql
+TITLE-ABS-KEY (
+  "generative AI" OR
+  "generative artificial intelligence" OR
+  GenAI OR
+  "large language model*" OR
+  LLM OR LLMs OR
+  "foundation model*" OR
+  ChatGPT OR
+  "GPT-3*" OR
+  "GPT-4*" OR
+  "GPT-5*" OR
+  Claude OR
+  Gemini OR
+  LLaMA OR
+  Copilot OR
+  "generative pre-trained transformer*" OR
+  "generative pretrained transformer*" OR
+  "agentic AI" OR
+  "agentic artificial intelligence" OR
+  "agentic system*" OR
+  "agentic workflow*" OR
+  "agentic framework*" OR
+  "generative agent*" OR
+  "AI agent*" OR
+  "autonomous agent*" OR
+  "multi-agent system*" OR
+  "multiagent system*"
+)
+AND
+TITLE-ABS-KEY (
+  "learning analytics" OR
+  "teaching analytics" OR
+  "teacher analytics" OR
+  "classroom analytics" OR
+  "student analytics" OR
+  "educational data mining" OR
+  "academic analytics"
+)
+```
+
+**Evaluation:**
+- **Volume & Comparison:** Retrieved 934 records from Scopus (`scopus-2.csv`).
+  - Total records: 934
+  - Retained from Iteration 1: 932 (100% retention)
+  - New records: 2 (+0.21% marginal increase)
+  - Excluded records: 0
+  - Unique EIDs: 934 (no duplicates)
+- **Contribution of Added Terms:**
+  - Both newly retrieved records were captured via `Copilot`:
+    1. *Leia 2.0: A Configurable AI-Powered Pedagogical Assistant for Reducing Programming Barriers in Engineering Education* (2027) — evaluated against coding assistants like GitHub Copilot within learning analytics environments.
+    2. *Leveraging Artificial Intelligence for Teacher Training: Enhancing Professional Development in India's Foundational Education System After COVID-19* (2026) — analyzing tools such as Copilot for teacher analytics and professional development.
+  - Terms `"GPT-3*"`, `"GPT-5*"`, `"agentic framework*"`, and `"student analytics"` introduced no further independent records, confirming that the conceptual space covered by these terms is already comprehensively spanned by the established query terms.
+- **Convergence Assessment:**
+  - **Stability:** The retrieved corpus is highly stable (932 of 932 previously validated records retained).
+  - **Diminishing Returns:** The marginal yield decreased from +47 records (+5.3%) in Iteration 1 to +2 records (+0.21%) in Iteration 2, demonstrating an asymptotic plateau.
+  - **Conceptual Completeness:** All core facets (Generative AI generic terms and prominent models, Agentic AI workflows/systems/agents, and Teaching/Learning Analytics dimensions) are exhaustively covered without residual terminology gaps.
+
+**Changes:**
+No further modifications are proposed. The search strategy has reached operational convergence.
+
+**Rationale:**
+The marginal gain of only two highly targeted records (+0.21%) indicates that further lexical expansion would produce negligible returns or risk introducing uncontrolled semantic noise. The executed Query 02 achieves high sensitivity and precision across both GenAI/Agentic AI and Teaching/Learning Analytics.
+
+**Validation Results:**
+- Iteration 2.
+- Total retrieved: 934 records.
+- New records: 2.
+- Retained records: 932.
+- Excluded records: 0.
+
+**Convergence Status:** `converged`
