@@ -287,6 +287,82 @@ TITLE-ABS-KEY (
 
 **Convergence Status:** `continue` (revisado el 2026-11-03; el valor original era `converged`)
 
+## Iteration 3
+
+**Timestamp:** 2026-11-03 09:03 (America/Bogota, UTC-05:00)
+
+**Search String:** cadena 03, **ejecutada** en Scopus; produjo el CSV analizado (`scopus-3.csv`, 946 registros). Es la cadena 02 más nombres de modelos y proveedores de LLM; sin filtros por tipo de documento.
+
+```sql
+TITLE-ABS-KEY (
+  "generative AI" OR
+  "generative artificial intelligence" OR
+  GenAI OR
+  "large language model*" OR
+  LLM OR LLMs OR
+  "foundation model*" OR
+  "agentic AI" OR
+  "agentic artificial intelligence" OR
+  "AI agent*" OR
+  "autonomous agent*" OR
+  "multi-agent system*" OR
+  "multiagent system*" OR
+  ChatGPT OR
+  "GPT*" OR
+  "retrieval-augmented generation" OR
+  Claude OR
+  Gemini OR
+  "Llama*" OR
+  DeepSeek OR
+  Mistral OR
+  Qwen OR
+  Copilot OR
+  OpenAI OR
+  Anthropic
+)
+AND
+TITLE-ABS-KEY (
+  "learning analytics" OR
+  "teaching analytics" OR
+  "educational data mining" OR
+  "academic analytics"
+)
+```
+
+**Evaluation:**
+
+- Comparación por EID con la iteración 2: 10 registros nuevos, 936 conservados y 0 perdidos, como se esperaba de un superconjunto. Respecto a la iteración 1: 24 nuevos, 922 conservados y 11 perdidos (los 11 de "agentic" ya conocidos). Respecto a la iteración 0: 61 nuevos, 885 conservados y 0 perdidos.
+- Atribución de los 10 nuevos por término: Gemini 5 (3 exclusivos; 2 coinciden con OpenAI), OpenAI 2 (ambos con Gemini), Copilot 2, DeepSeek 2 y Claude 1. Llama*, Mistral, Qwen y Anthropic no aportaron ningún registro nuevo. Gemini fue exclusivo en 3 de 25 registros que lo mencionan (12 %); ChatGPT lo había sido en 31 de 125 (25 %).
+- Pertinencia de los 10 nuevos (lectura de título y contexto en el resumen; no es una revisión de texto completo):
+  - 7 usan un modelo o servicio de IA generativa como herramienta o como objeto de estudio en el análisis educativo: "VisionTutor: An Adaptive Tutoring Platform for Real-Time Progressive Learning" (Gemini 2.5 Pro), "AI-Enhanced Think-Pair-Share: A Learning Analytics Approach..." (chatbot basado en Gemini), "Edutrack: AI based Personalized Learning Through Secure Analytics" (Gemini u OpenAI), "An Automated and Personalized Microlearning... Using Gemini-AI and NLP", "DNA of learning behaviors: A novel approach of learning performance prediction by NLP" (Gemini y OpenAI para representaciones de texto), y dos estudios con DeepSeek (reforma de un curso de BIM y enseñanza de chino con EDM y learning analytics).
+  - 2 son dudosos: "Leia 2.0: A Configurable AI-Powered Pedagogical Assistant..." (GitHub Copilot solo se menciona como herramienta existente) y un estudio de formación docente en India (menciona "lesson planning copilots" como concepto genérico, no como modelo).
+  - 1 es un falso positivo confirmado: "THE METAPHORS WE LEARN BY: Toward a philosophy of learning analytics" coincide con "Claude" porque el resumen cita a "Jean Claude Guédon".
+- Tipo de los nuevos: 7 conference paper, 2 article, 1 book chapter; ninguno es "Conference review". Año: 2023: 1; 2024: 1; 2025: 3; 2026: 4; 2027: 1.
+- Rendimiento marginal por iteración (nuevos sobre la base de la iteración anterior): iteración 1: 48 (5,4 %); iteración 2: 14 (1,5 %); iteración 3: 10 (1,1 %), de los cuales 7 son pertinentes (0,7 %).
+- Cobertura del lado agéntico: hay evidencia directa y proviene de documentos que la cadena 00 no veía. En la iteración 1, el término "agentic" sin acompañar recuperó 11 registros ocultos y solo 1 usa "agentic" en sentido de IA ("agentic companions"); los otros 10 se refieren a agencia humana. En el corpus actual, 27 registros contienen "agentic"; los 8 que no contienen "agentic AI" ya están recuperados por otros términos. Esto no apunta a un vacío importante en ese concepto.
+- Candidatos restantes: en el CSV de la cadena 03 aparecen con 1 o 2 registros cada uno Doubao (2), ERNIE (2), Bard (2), Midjourney (2), Stable Diffusion (2), Kimi (1), Gemma (1), Grok (1) y NotebookLM (1); DALL-E, Qianwen/Tongyi y "Perplexity AI" tienen 0. Extrapolando de forma aproximada la tasa observada de registros exclusivos (12 % a 25 % de los que mencionan el término), cada uno aportaría una fracción de documento. Esta es una estimación, no una medición.
+- Fuera de la cadena, sin decidir: (a) 75 registros "Conference review" (parecen volúmenes de proceedings, no revisados individualmente); (b) 51 registros recuperados solo por términos de agentes clásicos, sin ningún término de GenAI, LLM, modelos o agentic AI, de pertinencia discutible para IA generativa y agéntica; (c) una decisión de alcance sobre IA generativa no basada en texto (redes generativas adversarias y modelos de difusión): 18 registros de la cadena 03 mencionan "generative adversarial" o GAN, y esos conceptos no están en la cadena porque no se confirmó que estén dentro del alcance.
+
+**Changes:** ninguna. No se propone una cadena 04. La cadena final es la cadena 03, que fue ejecutada y validada con su CSV.
+
+**Rationale:**
+
+- Convergencia operativa: el conjunto es estable (0 pérdidas respecto a las iteraciones 0, 1 y 2, salvo los 11 retirados a propósito); el rendimiento marginal descendió de 48 a 14 y a 10 registros, con 7 pertinentes en la última iteración; los conceptos principales de ambos bloques y las familias de nombres de modelos con presencia relevante en el corpus están cubiertos; y los términos aún no incluidos tienen una presencia de 0 a 2 registros cada uno, sin una justificación metodológica concreta para otra iteración.
+- Esto es convergencia operativa, no una demostración de exhaustividad. Los CSV solo contienen documentos ya recuperados y no muestran los que la cadena sigue sin ver; un residuo probable, de pocos documentos, corresponde a nombres de modelos poco frecuentes y a herramientas de generación de imágenes.
+- Los términos Llama*, Mistral, Qwen y Anthropic no aportaron registros nuevos en esta iteración pero se conservan: eliminarlos no está justificado y no tiene costo en precisión que se haya observado.
+- El ruido por homonimia fue de 1 falso positivo en 10 nuevos ("Claude"); es aceptable y se resuelve en el cribado.
+- La cadena final no aplica filtros por tipo de documento, según las restricciones del procedimiento.
+
+**Validation Results:**
+
+- Registros: 946; EID únicos: 946; duplicados por EID: 0; DOI presentes: 795 (únicos: 795); sin DOI: 151; sin resumen: 2. Las columnas son idénticas a las de las iteraciones anteriores.
+- Respecto a la iteración 2 (por EID): nuevos 10; conservados 936; perdidos 0. Respecto a la iteración 1: nuevos 24; conservados 922; perdidos 11. Respecto a la iteración 0: nuevos 61; conservados 885; perdidos 0.
+- Perfil: 884 de 946 son de 2024 o posterior; 785 de 2025 o posterior; 31 de 2022 o anterior. Tipos: 491 conference paper, 270 article, 75 conference review, 44 book chapter, 43 review, 14 editorial, 5 book, 3 note, 1 data paper.
+- Las coincidencias por término se aproximaron con expresiones regulares sobre título, resumen y palabras clave (guiones como espacios); 4 registros no satisfacen literalmente el bloque 2 con esa aproximación (Scopus los recuperó por un procesamiento que no se reprodujo). La pertinencia se evaluó por lectura de títulos y contextos del resumen, sin validación con dos revisores.
+
+**Convergence Status:** `converged`
+
 <!-- Append subsequent iterations below. Preserve previous iterations. -->
+
 
 
