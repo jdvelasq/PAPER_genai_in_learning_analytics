@@ -50,8 +50,8 @@ TITLE-ABS-KEY (
 
 **Changes:**
 Proposed Query 01 expands both the GenAI/Agentic AI and the Analytics facets incrementally:
-1. Add `ChatGPT` to the AI facet to capture model-specific literature.
-2. Add `"generative pre-trained transformer*"` and `"generative pretrained transformer*"` to capture formal naming.
+1. Add leading model families (`ChatGPT`, `"GPT-4*"`, `Claude`, `Gemini`, `LLaMA`) to capture model-specific comparative and empirical literature while avoiding commercial provider bias.
+2. Add `"generative pre-trained transformer*"` and `"generative pretrained transformer*"` to capture formal terminology.
 3. Add `"generative agent*"` and `"agentic system*"` and `"agentic workflow*"` to enhance Agentic AI recall.
 4. Add `"teacher analytics"` and `"classroom analytics"` to strengthen the Teaching Analytics facet.
 
@@ -65,6 +65,10 @@ TITLE-ABS-KEY (
   LLM OR LLMs OR
   "foundation model*" OR
   ChatGPT OR
+  "GPT-4*" OR
+  Claude OR
+  Gemini OR
+  LLaMA OR
   "generative pre-trained transformer*" OR
   "generative pretrained transformer*" OR
   "agentic AI" OR
@@ -89,7 +93,7 @@ TITLE-ABS-KEY (
 ```
 
 **Rationale:**
-The baseline search exhibits robust coverage of general GenAI concepts in learning analytics, but displays clear omissions: (1) `ChatGPT` is a dominant informal and formal term in the educational domain; omitting it risks missing papers that discuss ChatGPT applications in learning analytics without including generic phrases like "large language model"; (2) Agentic AI literature in education heavily employs `"generative agent*"`, `"agentic system*"`, and `"agentic workflow*"`; (3) Teaching Analytics is severely underrepresented (0.9%), and educator-oriented literature frequently uses `"teacher analytics"` or `"classroom analytics"`. An incremental addition allows direct measurement of recall expansion without conflating additions with premature exclusions.
+The baseline search exhibits robust coverage of general GenAI concepts in learning analytics, but displays clear omissions: (1) Leading foundation models and applications (`ChatGPT`, `"GPT-4*"`, `Claude`, `Gemini`, `LLaMA`) are extensively evaluated in learning analytics research; including them avoids single-provider bias and ensures papers that evaluate specific models without employing generic terms like "large language model" are captured; (2) Agentic AI literature in education heavily employs `"generative agent*"`, `"agentic system*"`, and `"agentic workflow*"`; (3) Teaching Analytics is severely underrepresented (0.9%), and educator-oriented literature frequently uses `"teacher analytics"` or `"classroom analytics"`. An incremental addition allows direct measurement of recall expansion without conflating additions with premature exclusions.
 
 **Validation Results:**
 - Baseline iteration (Iteration 0).
