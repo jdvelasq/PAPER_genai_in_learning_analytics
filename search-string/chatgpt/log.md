@@ -137,3 +137,46 @@ The expanded query recovered additional documents without dropping any prior rec
 ### Convergence Status
 
 `continue` — **NO, not converged**. Execute query 03 and evaluate additional retrieval and relevance.
+
+
+## Iteration 3 — Scopus export of search 03
+
+**Timestamp:** 2026-11-03 (analysis date; Scopus export date not verified)
+
+### Search String
+
+Executed query 03:
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" OR ChatGPT OR "GPT-3" OR "GPT-3.5" OR "GPT-4" OR "GPT-4o" OR "generative agent*" OR "generative pretrained transformer*" OR "generative pre-trained transformer*" OR "retrieval augmented generation" OR "retrieval-augmented generation" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" )
+```
+
+### Evaluation
+
+- Input: `chatgp-03.csv`, **930** records and 22 columns.
+- Compared with query 02 (`chatgp-02.csv`) by Scopus EID: **3 added, 0 lost, 927 shared**.
+- Additional titles: *Intelligent Feedback Analytics: Hybrid LSTM-GPT Framework for Educational Improvement* (2025); *Classrooms Without Borders: Charting Innovative Pathways for Artificial Intelligence in Education* (2025); *Proceedings - 2023 International Conference on Advanced Computing and Communication Technologies, ICACCTech 2023* (2023).
+- The incremental retrieval is small; topical eligibility of these three records has not been established by formal screening.
+
+### Changes
+
+**Proposed next search string 04 (not executed):** add `"LLM agent*"`, `"LLM-based agent*"`, and `"agent-based AI"` to the GenAI/agent block; retain the domain block.
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" OR ChatGPT OR "GPT-3" OR "GPT-3.5" OR "GPT-4" OR "GPT-4o" OR "generative agent*" OR "LLM agent*" OR "LLM-based agent*" OR "agent-based AI" OR "generative pretrained transformer*" OR "generative pre-trained transformer*" OR "retrieval augmented generation" OR "retrieval-augmented generation" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" )
+```
+
+### Rationale
+
+The small increment suggests diminishing returns from additional GPT names. One targeted expansion tests alternative agent terminology. Added terms may retrieve off-topic records; retrieved-set stability alone cannot establish completeness or precision.
+
+### Validation Results
+
+- Query 02: 927; query 03: 930.
+- New EIDs: 3; lost EIDs: 0.
+- Missing abstracts: 0; duplicate nonempty DOI values: 0.
+- Seed-article recall and independent relevance screening: pending.
+
+### Convergence Status
+
+`continue` — **NO, not converged**. Execute query 04 and evaluate marginal additions and relevance.
