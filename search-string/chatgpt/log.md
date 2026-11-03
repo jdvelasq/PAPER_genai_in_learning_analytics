@@ -306,3 +306,54 @@ No Scopus results for query 05 have been supplied. Query 04 remains the last exe
 ### Convergence Status
 
 `continue` — **operational convergence reopened** to evaluate provider-name coverage. Query 05 is pending execution and must not be labeled validated.
+
+
+## Iteration 5 — Scopus export of search 05
+
+**Timestamp:** 2026-11-03 (analysis date; filename timestamp 20261103-140606).
+
+### Search String
+
+Executed query 05:
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" OR "generative agent*" OR "LLM agent*" OR "LLM-based agent*" OR "agent-based AI" OR ChatGPT OR "GPT-3" OR "GPT-3.5" OR "GPT-4" OR "GPT-4o" OR "generative pretrained transformer*" OR "generative pre-trained transformer*" OR "retrieval augmented generation" OR "retrieval-augmented generation" OR "Claude AI" OR "Claude 3" OR "Claude 3.5" OR "Google Gemini" OR "Gemini AI" OR "Google Bard" OR "PaLM 2" OR "Llama 2" OR "Llama 3" OR "Meta Llama" OR "Microsoft Copilot" OR "GitHub Copilot" OR "Bing Chat" OR "Mistral AI" OR Mixtral OR Qwen OR "Tongyi Qianwen" OR DeepSeek OR "DeepSeek-R1" OR "DeepSeek-V3" OR "Perplexity AI" OR "Grok AI" OR "Character.AI" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" )
+```
+
+### Evaluation
+
+- Source CSV: `scopus-5(20261103-140606).csv`.
+- Retrieved: **936 records**.
+- EID comparison against `chatgp-04.csv` (930 records): **930 retained, 6 added, 0 lost**.
+- Duplicate EIDs in query 05 CSV: 0.
+- The six newly retrieved records (titles):
+  - AI-Empowered BIM Course Teaching Reform: A Cross-Integration and Project-Driven Approach
+  - An Empirical Study on Short-Term Blended International Chinese Language Teaching Integrating EDM, Learning Analytics and AI: A Case Study for Computer Science Majors in Tunisian Technical Institutions
+  - Leia 2.0: A Configurable AI-Powered Pedagogical Assistant for Reducing Programming Barriers in Engineering Education
+  - An Automated and Personalized Microlearning for Adaptive Self-Learning Environments Using Gemini-AI and NLP
+  - AI-Enhanced Think-Pair-Share: A Learning Analytics Approach to Foster Linguistic Creative Thinking and Collaborative Learning
+  - DNA of learning behaviors: A novel approach of learning performance prediction by NLP
+- Several additional records explicitly concern Gemini, DeepSeek, AI pedagogical assistants, or learning analytics; formal inclusion screening is pending. The sixth title on learning performance prediction may be less directly relevant to generative AI and requires inspection.
+
+### Changes
+
+**Proposed query 06 (NOT executed):** retain query 05 and add selected model-version variants from Anthropic, Google, Meta, Mistral, Alibaba, DeepSeek and OpenAI.
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" OR "generative agent*" OR "LLM agent*" OR "LLM-based agent*" OR "agent-based AI" OR ChatGPT OR "GPT-3" OR "GPT-3.5" OR "GPT-4" OR "GPT-4o" OR "generative pretrained transformer*" OR "generative pre-trained transformer*" OR "retrieval augmented generation" OR "retrieval-augmented generation" OR "Claude AI" OR "Claude 3" OR "Claude 3.5" OR "Google Gemini" OR "Gemini AI" OR "Google Bard" OR "PaLM 2" OR "Llama 2" OR "Llama 3" OR "Meta Llama" OR "Microsoft Copilot" OR "GitHub Copilot" OR "Bing Chat" OR "Mistral AI" OR Mixtral OR Qwen OR "Tongyi Qianwen" OR DeepSeek OR "DeepSeek-R1" OR "DeepSeek-V3" OR "Perplexity AI" OR "Grok AI" OR "Character.AI" OR "Claude 2" OR "Claude Sonnet" OR "Claude Opus" OR "Gemini 1.5" OR "Gemini 2.0" OR "Gemini 2.5" OR "Llama 3.1" OR "Llama 3.2" OR "Mistral 7B" OR "Codestral" OR "Qwen2" OR "Qwen2.5" OR "Qwen3" OR "DeepSeek Coder" OR "DeepSeek V2" OR "GPT-4.1" OR "GPT-5" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" )
+```
+
+### Rationale
+
+Query 05 recovered six previously missed records, suggesting that provider/model names can improve recall. A focused expansion of version-specific names tests whether further omissions remain without immediately adding ambiguous standalone product names. New records require relevance screening; incremental yield alone is insufficient to establish quality.
+
+### Validation Results
+
+- Query 04: 930; query 05: 936.
+- New EIDs: 6; lost EIDs: 0; shared: 930.
+- Query 06 retrieval: pending.
+- Formal relevance and seed-article recall: pending.
+
+### Convergence Status
+
+`continue` — **NO, not converged**. Execute proposed query 06 and compare EIDs and topical relevance.
