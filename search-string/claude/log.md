@@ -138,7 +138,7 @@ TITLE-ABS-KEY (
 - Candidatos adicionales evaluados con el CSV: en la cadena 01 los registros que mencionan Gemini (20), Llama (19), DeepSeek (10), Claude (13) o Copilot (10) ya estaban todos en la iteración 0 (0 nuevos en cada caso). Para "GPT" (85 registros) solo 3 son nuevos, y para "GPT-4/3.5/4o" (54), 2. Esto no mide los documentos que siguen omitidos, pero no da evidencia de que los nombres de otros modelos aporten recuperación. "chatbot*" (78), "AI tutor*" (21) y "AI-powered" (151) son conceptos más amplios que GenAI, con alto riesgo de coincidencia terminológica sin pertinencia.
 - Sin cambios respecto a la iteración 0: los 52 registros recuperados solo por términos de agentes clásicos siguen en el corpus (no se tocaron).
 
-**Changes:** propuesta (**no ejecutada**) para la cadena 02. Respecto a la cadena 01: (1) se elimina "agentic"; (2) se agrega "GPT*"; (3) se excluye el tipo documental "Conference review". Se conservan ChatGPT y "retrieval-augmented generation".
+**Changes:** propuesta (**no ejecutada**) para la cadena 02. Respecto a la cadena 01: (1) se elimina "agentic"; (2) se agrega "GPT*". Se conservan ChatGPT y "retrieval-augmented generation". No se aplica ningún filtro por tipo de documento. Revisión: la propuesta original de esta iteración incluía `AND NOT DOCTYPE ( cr )`; se retiró antes de ejecutarla por indicación del usuario, que señaló que el procedimiento no permite restringir por tipo de documento. Los volúmenes de proceedings se tratarán en el cribado posterior, por EID.
 
 ```sql
 TITLE-ABS-KEY (
@@ -165,13 +165,12 @@ TITLE-ABS-KEY (
   "educational data mining" OR
   "academic analytics"
 )
-AND NOT DOCTYPE ( cr )
 ```
 
 **Rationale:**
 
 - Eliminar "agentic" tiene una pérdida acotada y conocida: 11 registros, 10 de ellos de uso no relacionado con IA; el 11.º ("agentic companions") se pierde, pero la cadena conserva "agentic AI" y "agentic artificial intelligence". Se evaluó el impacto antes de retirar el término.
-- Excluir "Conference review" elimina los 74 registros de ese tipo, todos aparentemente volúmenes de proceedings cuyos resúmenes enumeran muchos trabajos. Es un filtro de tipo documental, no de tema. Si resultara que alguno es un estudio real, se recuperaría por la comparación de EID de la iteración 2. La pérdida esperada por (1) y (3) es de 85 registros sin solape (11 + 74), de modo que la base esperada antes de las adiciones es de 848.
+- No se filtra por tipo de documento. Los 74 registros "Conference review" (aparentemente volúmenes de proceedings, no revisados individualmente) permanecen en la cadena y se marcarán por EID en el cribado. La pérdida esperada por la eliminación de "agentic" es de 11 registros, de modo que la base esperada antes de las adiciones es de 922.
 - Agregar "GPT*": ChatGPT recuperó 31 registros que la cadena 00 no veía; la variante de modelo es la extensión más directa del mismo mecanismo. Es una prueba acotada: el CSV de la cadena 01 no da evidencia de que aporte muchos (solo 3 de 85 registros con "GPT" son nuevos), así que se espera un rendimiento bajo. No se verificó cómo Scopus procesa el comodín con "GPT-4"; el CSV lo mostrará.
 - No se agregan Gemini, Llama, DeepSeek, Claude ni Copilot: ya estaban todos en la iteración 0, sin evidencia de omisiones, y varios son homónimos de palabras comunes.
 - No se modifica el bloque 2: no hay evidencia en los CSV de un vacío de cobertura en él.
@@ -182,7 +181,7 @@ AND NOT DOCTYPE ( cr )
 - Registros: 933; EID únicos: 933; duplicados por EID: 0; DOI presentes: 787 (únicos: 787); sin DOI: 146. Las columnas del CSV son idénticas a las de la iteración 0.
 - Comparación con la iteración 0 (por EID): nuevos 48; conservados 885; perdidos 0.
 - Nuevos por término: ChatGPT 31, agentic 11, RAG 6 (sin solapes). Nuevos de tipo Conference review: 7. Registros de tipo Conference review en total: 74.
-- Predicción verificable para la cadena 02: perdidos 85 (11 "solo agentic" + 74 Conference review, sin solape); base esperada 848 antes de las adiciones.
+- Predicción verificable para la cadena 02: perdidos 11 (los registros recuperados solo por "agentic"); base esperada 922 antes de las adiciones.
 - Las coincidencias por término se aproximaron con expresiones regulares sobre título, resumen, palabras clave de autor y palabras clave indexadas, tratando los guiones como espacios. La evaluación de pertinencia se basa en lectura de títulos y de contextos del resumen, sin revisión de textos completos ni validación con dos revisores.
 
 **Convergence Status:** `continue`
