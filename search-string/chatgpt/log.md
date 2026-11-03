@@ -180,3 +180,44 @@ The small increment suggests diminishing returns from additional GPT names. One 
 ### Convergence Status
 
 `continue` — **NO, not converged**. Execute query 04 and evaluate marginal additions and relevance.
+
+
+## Iteration 4 — Scopus export of search 04
+
+**Timestamp:** 2026-11-03 (analysis date; export date not verified)
+
+### Search String
+
+Executed Scopus query 04:
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" OR ChatGPT OR "GPT-3" OR "GPT-3.5" OR "GPT-4" OR "GPT-4o" OR "generative agent*" OR "LLM agent*" OR "LLM-based agent*" OR "agent-based AI" OR "generative pretrained transformer*" OR "generative pre-trained transformer*" OR "retrieval augmented generation" OR "retrieval-augmented generation" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" )
+```
+
+### Evaluation
+
+- Source: `chatgp-04.csv`; 930 records and 22 fields.
+- Comparison against `chatgp-03.csv`: **identical sets of 930 Scopus EIDs**; 0 newly retrieved records, 0 lost records.
+- No duplicated EIDs and no missing abstracts in the search 04 CSV.
+- The additional agent terminology has zero marginal yield in the retrieved dataset.
+- This result establishes retrieval stability for this specific expansion only, not exhaustive coverage or topical eligibility.
+
+### Changes
+
+No further query proposed. Retain the **executed and evaluated** query 04 above as the final query for the current term-expansion workflow.
+
+### Rationale
+
+Query 04 added three agent expressions to query 03 without changing the retrieved set. After preceding expansions (885 → 882 → 927 → 930 → 930), this meets a practical *marginal retrieval stability* stopping criterion for the current strategy. Independent seed-paper recall and relevance screening remain necessary before making claims about completeness or final study eligibility.
+
+### Validation Results
+
+- Query 03: 930 records.
+- Query 04: 930 records.
+- Shared EIDs: 930; added: 0; lost: 0; overlap: 100%.
+- Independent seed-paper recall: not assessed.
+- Eligibility screening/precision: not assessed.
+
+### Convergence Status
+
+`converged` — **YES, operational convergence by zero marginal yield in iteration 04**. Final executed search: query 04. This is not a claim of complete recall or validated topical precision.
