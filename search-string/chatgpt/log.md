@@ -221,3 +221,88 @@ Query 04 added three agent expressions to query 03 without changing the retrieve
 ### Convergence Status
 
 `converged` — **YES, operational convergence by zero marginal yield in iteration 04**. Final executed search: query 04. This is not a claim of complete recall or validated topical precision.
+
+
+## Reopening after Iteration 4 — proposed search 05
+
+**Timestamp:** 2026-11-03.
+
+### Evaluation
+
+Iteration 4's operational convergence (930 records; zero incremental retrieval relative to iteration 3) did not test coverage of non-OpenAI model and application names. The user identified the asymmetry between including ChatGPT/GPT names and omitting other providers. This is a methodological gap in terminology exploration, not evidence that any particular papers are missing.
+
+### Changes
+
+**Proposed search string 05 (NOT YET EXECUTED):** retain the complete executed query 04 and add selected, relatively specific names for Anthropic, Google, Meta, Microsoft, Mistral, Alibaba, DeepSeek, Perplexity, xAI and Character.AI products/models. Avoid standalone ambiguous names such as Claude, Gemini, Bard, Copilot pending targeted evaluation.
+
+```sql
+TITLE-ABS-KEY (
+  "generative AI" OR
+  "generative artificial intelligence" OR
+  GenAI OR
+  "large language model*" OR
+  LLM OR LLMs OR
+  "foundation model*" OR
+  "agentic AI" OR
+  "agentic artificial intelligence" OR
+  "AI agent*" OR
+  "autonomous agent*" OR
+  "multi-agent system*" OR
+  "multiagent system*" OR
+  "generative agent*" OR
+  "LLM agent*" OR
+  "LLM-based agent*" OR
+  "agent-based AI" OR
+  ChatGPT OR
+  "GPT-3" OR
+  "GPT-3.5" OR
+  "GPT-4" OR
+  "GPT-4o" OR
+  "generative pretrained transformer*" OR
+  "generative pre-trained transformer*" OR
+  "retrieval augmented generation" OR
+  "retrieval-augmented generation" OR
+  "Claude AI" OR
+  "Claude 3" OR
+  "Claude 3.5" OR
+  "Google Gemini" OR
+  "Gemini AI" OR
+  "Google Bard" OR
+  "PaLM 2" OR
+  "Llama 2" OR
+  "Llama 3" OR
+  "Meta Llama" OR
+  "Microsoft Copilot" OR
+  "GitHub Copilot" OR
+  "Bing Chat" OR
+  "Mistral AI" OR
+  Mixtral OR
+  Qwen OR
+  "Tongyi Qianwen" OR
+  DeepSeek OR
+  "DeepSeek-R1" OR
+  "DeepSeek-V3" OR
+  "Perplexity AI" OR
+  "Grok AI" OR
+  "Character.AI"
+)
+AND
+TITLE-ABS-KEY (
+  "learning analytics" OR
+  "teaching analytics" OR
+  "educational data mining" OR
+  "academic analytics"
+)
+```
+
+### Rationale
+
+Test whether model/application names beyond the OpenAI ecosystem recover relevant Scopus records absent from the 930-record set. Compare EIDs and screen marginal records for topical relevance; do not infer improved recall solely from a higher count.
+
+### Validation Results
+
+No Scopus results for query 05 have been supplied. Query 04 remains the last executed and evaluated search (930 records).
+
+### Convergence Status
+
+`continue` — **operational convergence reopened** to evaluate provider-name coverage. Query 05 is pending execution and must not be labeled validated.
