@@ -93,4 +93,99 @@ TITLE-ABS-KEY (
 
 **Convergence Status:** `continue`
 
+## Iteration 1
+
+**Timestamp:** 2026-11-03 09:05 (America/Bogota, UTC-05:00)
+
+**Search String:** cadena 01, **ejecutada** en Scopus; produjo el CSV analizado (`scopus-1.csv`, 933 registros). Es la cadena 00 más tres términos en el bloque 1.
+
+```sql
+TITLE-ABS-KEY (
+  "generative AI" OR
+  "generative artificial intelligence" OR
+  GenAI OR
+  "large language model*" OR
+  LLM OR LLMs OR
+  "foundation model*" OR
+  "agentic AI" OR
+  "agentic artificial intelligence" OR
+  "AI agent*" OR
+  "autonomous agent*" OR
+  "multi-agent system*" OR
+  "multiagent system*" OR
+  ChatGPT OR
+  agentic OR
+  "retrieval-augmented generation"
+)
+AND
+TITLE-ABS-KEY (
+  "learning analytics" OR
+  "teaching analytics" OR
+  "educational data mining" OR
+  "academic analytics"
+)
+```
+
+**Evaluation:**
+
+- Comparación por EID con la iteración 0: 48 registros nuevos, 885 conservados y 0 perdidos. Los 885 EID de la cadena 00 están en la cadena 01, como se esperaba de un superconjunto. El aumento es de 5,4 %.
+- Atribución de los nuevos por término (cada uno se recupera por un solo término, sin solapes; ninguno contiene términos de la cadena 00): ChatGPT 31, agentic 11, retrieval-augmented generation 6.
+- **ChatGPT (31):** el término aporta documentos que la cadena 00 no podía ver. De los 125 registros de la cadena 01 que mencionan ChatGPT, 31 (24,8 %) no estaban en la iteración 0. En 12 de los 31 aparece en el título o en las palabras clave de autor, y en 19 solo en el resumen o las palabras clave indexadas. Entre los claramente pertinentes por título están "Class integration of ChatGPT and learning analytics for higher education", "The Feasibility of Utilizing ChatGPT in Learning Analytics for the Identification of At-Risk Students" y "ChatGPT-Assisted Codebook Design for Learning Analytics Datasets in Multiple Languages". Una parte de los 19 restantes menciona ChatGPT solo como ejemplo dentro de una lista de herramientas, o forma parte de volúmenes de proceedings.
+- **agentic (11):** es un fallo de precisión confirmado. Los 11 registros nuevos lo contienen únicamente en el resumen y en 10 se usa en el sentido de agencia humana ("agentic engagement", "agentic learning", "agentic students", "less agentic teachers", dispositivos "inherently agentic"), no de IA agéntica. Solo uno, "AI-Guided Reflection to Bridge Formal Learning and Work" (2027), lo usa en sentido de IA ("agentic companions"). La justificación de la iteración 0 (capturar "agentic RAG", "agentic workflow") no se confirmó con estos datos. Siete de los 11 son de 2022 o anteriores.
+- **retrieval-augmented generation (6):** cinco describen o usan sistemas o estudios basados en RAG en educación (p. ej., "EduFlex", "Rise: A Retrieval-Augmented Generation Enhanced Immersive System for Education") y el sexto es el volumen de proceedings SDS 2026; cuatro de los seis lo tienen en título o palabras clave de autor. Es el término de mayor pertinencia por documento, pero de poco volumen.
+- **Ruido por proceedings:** de los 48 nuevos, 7 son "Conference review" que parecen volúmenes completos (6 por ChatGPT y 1 por RAG). En total, la cadena 01 tiene 74 registros de ese tipo (67 de la iteración 0 más 7). Por sus títulos, todos parecen frentes de volumen y no estudios; no se revisaron individualmente.
+- Perfil temporal de los nuevos: 2017: 1; 2021: 4; 2022: 2; 2023: 7; 2024: 7; 2025: 9; 2026: 17; 2027: 1. 26 de los 48 tienen términos del bloque 2 en título o palabras clave de autor.
+- Candidatos adicionales evaluados con el CSV: en la cadena 01 los registros que mencionan Gemini (20), Llama (19), DeepSeek (10), Claude (13) o Copilot (10) ya estaban todos en la iteración 0 (0 nuevos en cada caso). Para "GPT" (85 registros) solo 3 son nuevos, y para "GPT-4/3.5/4o" (54), 2. Esto no mide los documentos que siguen omitidos, pero no da evidencia de que los nombres de otros modelos aporten recuperación. "chatbot*" (78), "AI tutor*" (21) y "AI-powered" (151) son conceptos más amplios que GenAI, con alto riesgo de coincidencia terminológica sin pertinencia.
+- Sin cambios respecto a la iteración 0: los 52 registros recuperados solo por términos de agentes clásicos siguen en el corpus (no se tocaron).
+
+**Changes:** propuesta (**no ejecutada**) para la cadena 02. Respecto a la cadena 01: (1) se elimina "agentic"; (2) se agrega "GPT*"; (3) se excluye el tipo documental "Conference review". Se conservan ChatGPT y "retrieval-augmented generation".
+
+```sql
+TITLE-ABS-KEY (
+  "generative AI" OR
+  "generative artificial intelligence" OR
+  GenAI OR
+  "large language model*" OR
+  LLM OR LLMs OR
+  "foundation model*" OR
+  "agentic AI" OR
+  "agentic artificial intelligence" OR
+  "AI agent*" OR
+  "autonomous agent*" OR
+  "multi-agent system*" OR
+  "multiagent system*" OR
+  ChatGPT OR
+  "GPT*" OR
+  "retrieval-augmented generation"
+)
+AND
+TITLE-ABS-KEY (
+  "learning analytics" OR
+  "teaching analytics" OR
+  "educational data mining" OR
+  "academic analytics"
+)
+AND NOT DOCTYPE ( cr )
+```
+
+**Rationale:**
+
+- Eliminar "agentic" tiene una pérdida acotada y conocida: 11 registros, 10 de ellos de uso no relacionado con IA; el 11.º ("agentic companions") se pierde, pero la cadena conserva "agentic AI" y "agentic artificial intelligence". Se evaluó el impacto antes de retirar el término.
+- Excluir "Conference review" elimina los 74 registros de ese tipo, todos aparentemente volúmenes de proceedings cuyos resúmenes enumeran muchos trabajos. Es un filtro de tipo documental, no de tema. Si resultara que alguno es un estudio real, se recuperaría por la comparación de EID de la iteración 2. La pérdida esperada por (1) y (3) es de 85 registros sin solape (11 + 74), de modo que la base esperada antes de las adiciones es de 848.
+- Agregar "GPT*": ChatGPT recuperó 31 registros que la cadena 00 no veía; la variante de modelo es la extensión más directa del mismo mecanismo. Es una prueba acotada: el CSV de la cadena 01 no da evidencia de que aporte muchos (solo 3 de 85 registros con "GPT" son nuevos), así que se espera un rendimiento bajo. No se verificó cómo Scopus procesa el comodín con "GPT-4"; el CSV lo mostrará.
+- No se agregan Gemini, Llama, DeepSeek, Claude ni Copilot: ya estaban todos en la iteración 0, sin evidencia de omisiones, y varios son homónimos de palabras comunes.
+- No se modifica el bloque 2: no hay evidencia en los CSV de un vacío de cobertura en él.
+- Criterio para la iteración 2: se declarará convergencia si, respecto a la base esperada, los documentos nuevos son pocos (se espera <2 %), poco pertinentes y la pérdida coincide con la prevista. En ese caso la cadena 02 quedará como cadena final validada.
+
+**Validation Results:**
+
+- Registros: 933; EID únicos: 933; duplicados por EID: 0; DOI presentes: 787 (únicos: 787); sin DOI: 146. Las columnas del CSV son idénticas a las de la iteración 0.
+- Comparación con la iteración 0 (por EID): nuevos 48; conservados 885; perdidos 0.
+- Nuevos por término: ChatGPT 31, agentic 11, RAG 6 (sin solapes). Nuevos de tipo Conference review: 7. Registros de tipo Conference review en total: 74.
+- Predicción verificable para la cadena 02: perdidos 85 (11 "solo agentic" + 74 Conference review, sin solape); base esperada 848 antes de las adiciones.
+- Las coincidencias por término se aproximaron con expresiones regulares sobre título, resumen, palabras clave de autor y palabras clave indexadas, tratando los guiones como espacios. La evaluación de pertinencia se basa en lectura de títulos y de contextos del resumen, sin revisión de textos completos ni validación con dos revisores.
+
+**Convergence Status:** `continue`
+
 <!-- Append subsequent iterations below. Preserve previous iterations. -->
+
