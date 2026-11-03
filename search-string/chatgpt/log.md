@@ -91,3 +91,49 @@ The education block removed only three records and yielded no new records. Broad
 ### Convergence Status
 
 `continue` — **NO, not converged**. Execute query 02 in Scopus and supply its CSV for evaluation.
+
+
+## Iteration 2 — Scopus export of search 02
+
+**Timestamp:** 2026-11-03 (analysis date; export date not independently verified)
+
+### Search String
+
+Executed query 02:
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" OR ChatGPT OR "GPT-3" OR "GPT-4" OR "generative agent*" OR "retrieval augmented generation" OR "retrieval-augmented generation" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" )
+```
+
+### Evaluation
+
+- Source: `chatgp-02.csv`, 927 records, 22 columns; EID unique across all records.
+- Relative to query 00 (885 records): 42 additional, 0 lost, 885 shared.
+- Relative to query 01 (882 records): 45 additional, 0 lost, 882 shared.
+- New records compared with query 00: 17 conference papers, 13 articles, 8 conference reviews, 2 book chapters, 2 reviews.
+- Several new records appear to concern generic AI in education or conference proceedings; their substantive relevance is not established without eligibility screening.
+- In title, abstract or author keywords, literal text matches include learning analytics 810, educational data mining 132, data analytics 18, business analytics 2, ChatGPT 123, generative AI 389, and large language model 393; overlapping, nonexclusive counts.
+
+### Changes
+
+**Proposed next search string 03 (not executed):** retain query 02, adding GPT-3.5, GPT-4o, and spelling variants of generative pretrained transformers.
+
+```sql
+TITLE-ABS-KEY ( "generative AI" OR "generative artificial intelligence" OR GenAI OR "large language model*" OR LLM OR LLMs OR "foundation model*" OR "agentic AI" OR "agentic artificial intelligence" OR "AI agent*" OR "autonomous agent*" OR "multi-agent system*" OR "multiagent system*" OR ChatGPT OR "GPT-3" OR "GPT-3.5" OR "GPT-4" OR "GPT-4o" OR "generative agent*" OR "generative pretrained transformer*" OR "generative pre-trained transformer*" OR "retrieval augmented generation" OR "retrieval-augmented generation" ) AND TITLE-ABS-KEY ( "learning analytics" OR "teaching analytics" OR "educational data mining" OR "academic analytics" )
+```
+
+### Rationale
+
+The expanded query recovered additional documents without dropping any prior records. A limited further expansion tests potentially missing model names and terminology, without claiming these records are eligible. Search precision and seed-article recall remain to be evaluated.
+
+### Validation Results
+
+- Query 00: 885; query 01: 882; query 02: 927.
+- New EIDs versus query 00: 42; missing EIDs: 0.
+- Missing abstracts: 0; missing author-keyword fields: 119; duplicate nonempty DOIs: 0.
+- Independent seed-paper recall: not assessed.
+- Formal relevance screening of additional records: pending.
+
+### Convergence Status
+
+`continue` — **NO, not converged**. Execute query 03 and evaluate additional retrieval and relevance.
