@@ -95,7 +95,7 @@ TITLE-ABS-KEY (
 
 ## Iteration 1
 
-**Timestamp:** 2026-11-03 09:05 (America/Bogota, UTC-05:00)
+**Timestamp:** 2026-11-03 ~08:48 (America/Bogota, UTC-05:00; hora aproximada, corregida en la Iteration 2: el valor original, 09:05, se escribió sin consultar el reloj y era posterior a la hora real)
 
 **Search String:** cadena 01, **ejecutada** en Scopus; produjo el CSV analizado (`scopus-1.csv`, 933 registros). Es la cadena 00 más tres términos en el bloque 1.
 
@@ -186,5 +186,69 @@ TITLE-ABS-KEY (
 
 **Convergence Status:** `continue`
 
+## Iteration 2
+
+**Timestamp:** 2026-11-03 08:54 (America/Bogota, UTC-05:00)
+
+**Search String:** cadena 02, **ejecutada** en Scopus; produjo el CSV analizado (`scopus-2.csv`, 936 registros). Es la cadena 01 sin "agentic" y con "GPT*"; sin filtros por tipo de documento.
+
+```sql
+TITLE-ABS-KEY (
+  "generative AI" OR
+  "generative artificial intelligence" OR
+  GenAI OR
+  "large language model*" OR
+  LLM OR LLMs OR
+  "foundation model*" OR
+  "agentic AI" OR
+  "agentic artificial intelligence" OR
+  "AI agent*" OR
+  "autonomous agent*" OR
+  "multi-agent system*" OR
+  "multiagent system*" OR
+  ChatGPT OR
+  "GPT*" OR
+  "retrieval-augmented generation"
+)
+AND
+TITLE-ABS-KEY (
+  "learning analytics" OR
+  "teaching analytics" OR
+  "educational data mining" OR
+  "academic analytics"
+)
+```
+
+**Evaluation:**
+
+- La predicción de la iteración 1 se cumplió exactamente: los 11 registros perdidos respecto a la cadena 01 son los mismos 11 que se habían identificado como recuperados solo por "agentic"; no se perdió ningún otro. Se conservan los 922 registros restantes y los 885 de la iteración 0 siguen todos presentes (0 perdidos respecto a la cadena 00).
+- Nuevos respecto a la cadena 01: 14 registros, todos recuperados por "GPT*" (en todos hay un término que empieza por "gpt" en título, resumen o palabras clave). Equivalen a 1,5 % de la base de 922 conservada; el aumento respecto a la iteración anterior fue de 5,4 % (48 registros) y ahora es de 1,5 %.
+- Pertinencia de los 14 nuevos (lectura de títulos y del contexto en el resumen; no es una revisión de texto completo):
+  - 8 usan un modelo GPT como herramienta en el análisis educativo, p. ej. "Towards Learning Analytics for Interdisciplinary Learning: Leveraging Knowledge-empowered Fine-Tuned GPT Models", "Intelligent Feedback Analytics: Hybrid LSTM-GPT Framework for Educational Improvement", "Enhancing Data Extraction from Student Handwritten Notes Using Multi-Task U-net and GPT-4", y el análisis de escritura con una herramienta basada en GPT.
+  - 5 son dudosos o incidentales: GPT mencionado como motivación ("with the rise of chat GPT"), como un modelo comparado (GPT-2 en análisis de sentimiento), como parte de una lista de modelos, o con vínculo débil con analítica educativa (p. ej., "Understanding the Digital Epistemologies of Chat GPT").
+  - 1 es un volumen de proceedings ("16th International Conference on Educational Data Mining, EDM 2023").
+- Cobertura: se mantienen sin cambios la dependencia de "learning analytics" en el bloque 2 y la de los términos de LLM y GenAI en el bloque 1. No hay evidencia en los tres CSV de términos del bloque 2 omitidos.
+- Evidencia para más cambios: ninguna. En la iteración 1 los nombres de modelos Gemini, Llama, DeepSeek, Claude y Copilot no aportaron registros nuevos; "GPT*" aportó 14 con pertinencia mayoritaria, y los conceptos más amplios ("chatbot*", "AI tutor*", "AI-powered") tienen alto riesgo de coincidencia terminológica. No hay un término candidato con una justificación metodológica concreta.
+- Asuntos que no dependen de la cadena y se resuelven en el cribado, por EID: (a) 75 registros "Conference review" (74 de la iteración 1 más el volumen de EDM 2023), todos aparentemente volúmenes de proceedings, no revisados individualmente; (b) 51 registros recuperados solo por términos de agentes clásicos ("AI agent*", "autonomous agent*", "multi-agent system*"), sin ningún término de GenAI, LLM, ChatGPT, GPT, RAG o agentic AI, de pertinencia discutible para IA generativa y agéntica (la decisión de incluirlos depende del alcance de la revisión).
+
+**Changes:** ninguna. No se propone una cadena 03. La cadena final es la cadena 02, que fue ejecutada y validada con su CSV.
+
+**Rationale:**
+
+- Convergencia operativa: el conjunto es estable (0 pérdidas inesperadas, predicción de pérdidas confirmada), el rendimiento marginal cayó de 48 registros (5,4 %) a 14 (1,5 %), y de los 14 solo 8 son claramente pertinentes (alrededor de 0,9 % de la base). Los conceptos principales de ambos bloques están cubiertos y no hay términos o enfoques claramente omitidos con evidencia en los CSV.
+- Esto es convergencia operativa, no una demostración de exhaustividad: los CSV solo contienen documentos ya recuperados, y no pueden mostrar los que la cadena sigue sin ver. Las expansiones posibles (otros nombres de modelos, conceptos más amplios) no tienen evidencia a favor y tienen riesgo de ruido.
+- La cadena final se conserva sin filtros por tipo de documento, según las restricciones del procedimiento.
+
+**Validation Results:**
+
+- Registros: 936; EID únicos: 936; duplicados por EID: 0; DOI presentes: 786 (únicos: 786); sin DOI: 150; sin resumen: 2. Las columnas son idénticas a las de las iteraciones anteriores.
+- Respecto a la iteración 1 (por EID): nuevos 14; conservados 922; perdidos 11. Los 11 perdidos coinciden exactamente con los 11 predichos.
+- Respecto a la iteración 0 (por EID): nuevos 51; conservados 885; perdidos 0.
+- Perfil: 875 de 936 son de 2024 o posterior; 777 de 2025 o posterior; 31 de 2022 o anterior. Tipos: 484 conference paper, 268 article, 75 conference review, 43 review, 43 book chapter, 14 editorial, 5 book, 3 note, 1 data paper.
+- Aproximación por expresiones regulares sobre título, resumen y palabras clave (guiones como espacios); 4 registros no satisfacen literalmente el bloque 2 con esa aproximación (Scopus los recuperó por un procesamiento que no se reprodujo). La pertinencia se evaluó por lectura de títulos y contextos del resumen, sin validación con dos revisores.
+
+**Convergence Status:** `converged`
+
 <!-- Append subsequent iterations below. Preserve previous iterations. -->
+
 
