@@ -16,7 +16,7 @@
 - LLM: ChatGPT (GPT-6)
 
 ### 2. Search string
-The following is the **initial string proposed by ChatGPT**. The researcher has **not yet confirmed** that this exact version (including wildcard asterisks) was executed to produce the supplied CSV. Do not treat it as a verified executed query until confirmed.
+The researcher confirmed that the **initial search string proposed by ChatGPT**, including wildcard asterisks, was executed in Scopus and produced the supplied CSV.
 
 ```text
 TITLE-ABS-KEY(
@@ -48,7 +48,7 @@ TITLE-ABS-KEY(
 - Database: Scopus
 - Records: 885
 - Export fields: 22, including title, abstract, author keywords, index keywords, year, DOI, document type, and EID.
-- Export date and exact executed query: not independently verified.
+- Exact executed query: confirmed by the researcher as the iteration 0 string shown above. Export date: not independently verified.
 
 ### 4. Retrieval statistics
 - Total: **885** records.
@@ -68,10 +68,10 @@ TITLE-ABS-KEY(
 - Do not impose a publication-year cutoff solely to remove older records; first distinguish historical multi-agent educational systems from contemporary agentic AI research.
 - Evaluate the contributions of `educational data mining` and `academic analytics` to the intended TA/LA scope.
 - Check whether generic `LLM` and agent terminology causes off-topic retrieval.
-- Verify the exact query used to generate the CSV before treating this baseline as fully reproducible.
+- The researcher confirmed the exact baseline query; preserve its syntax unchanged for reproducibility.
 
 ### 7. Proposed next search string
-**Pending record-level relevance screening and confirmation of the executed baseline query.** The next candidate should retain both GenAI and Agentic AI, while assessing whether historical agent terms and adjacent analytics fields require narrowing. No untested revised query is recorded as an executed search.
+**Pending record-level relevance screening.** The next candidate should retain both GenAI and Agentic AI, while assessing whether historical agent terms and adjacent analytics fields require narrowing. No untested revised query is recorded as an executed search.
 
 ### 8. Convergence status
 **Not converged — baseline only.** One Scopus export has been analyzed; no iterative change in retrieval quality has yet been measured.
