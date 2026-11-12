@@ -88,4 +88,53 @@ TITLE-ABS-KEY(
 )
 ```
 
+El resultado quedo almacenado en el archivo `02.csv`.
+
+## Iteración 3
+
+- Artículos recuperados: 2,728
+- Estado: Converge
+- Explicación: La cadena corregida recupera nueve registros nuevos y conserva todos los registros de la iteración anterior. La revisión de títulos, abstracts, author keywords e index keywords no identifica otra familia terminológica que aumente materialmente la recuperación. La cadena final cubre las variantes principales de GenAI y Agentic AI, los modelos y proveedores relevantes, y las expresiones centrales de Learning Analytics y Teaching Analytics.
+
+### Cadena final seleccionada
+```text
+TITLE-ABS-KEY(
+  (
+    "generative artificial intelligence" OR "generative ai" OR genai OR
+    "generative model*" OR "generative language model*" OR
+    "large language model*" OR llm OR llms OR "foundation model*" OR
+    "generative pretrained transformer*" OR "ai-generated" OR
+    "ai generated" OR "generative agent*" OR "agentic ai" OR
+    "agentic artificial intelligence" OR "ai agent*" OR
+    "artificial intelligence agent*" OR "autonomous agent*" OR
+    "intelligent agent*" OR "pedagogical agent*" OR
+    "educational agent*" OR "multi-agent system*" OR
+    "multiagent system*" OR "autonomous ai" OR "conversational ai" OR
+    chatbot* OR chatgpt OR claude OR anthropic OR grok OR xai OR
+    gemini OR bard OR copilot OR "microsoft copilot" OR llama OR
+    mistral OR deepseek OR qwen OR gpt-3 OR gpt-4 OR gpt-5
+  )
+  AND
+  (
+    "learning analytic*" OR "teaching analytic*" OR
+    "learning and teaching analytic*" OR "teaching and learning analytic*" OR
+    "educational analytic*" OR "education analytic*" OR
+    "academic analytic*" OR "student analytic*" OR
+    "learner analytic*" OR "teacher analytic*" OR
+    "instructor analytic*" OR "classroom analytic*" OR
+    "instructional analytic*" OR "assessment analytic*" OR
+    "feedback analytic*" OR "discourse analytic*" OR
+    "multimodal learning analytic*" OR "learning data analytic*" OR
+    "student success analytic*" OR "learning intelligence" OR
+    "teaching intelligence" OR "learner model*" OR
+    "student model*" OR "learner modeling" OR "student modeling" OR
+    "knowledge tracing" OR "learning analytics dashboard*" OR
+    "learning analytics system*" OR "learning analytics platform*" OR
+    "learning trace*" OR "educational process mining" OR
+    "educational data science" OR "learning engineering" OR
+    "education data mining" OR "educational data mining" OR edm
+  )
+)
+```
+
 
