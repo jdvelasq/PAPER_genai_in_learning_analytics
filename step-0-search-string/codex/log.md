@@ -82,6 +82,7 @@ TITLE-ABS-KEY(
     "knowledge tracing" OR "learning analytics dashboard*" OR
     "learning analytics system*" OR "learning analytics platform*" OR
     "learning trace*" OR "educational process mining" OR
+    "educational data science" OR "learning engineering" OR
     "education data mining" OR "educational data mining" OR edm
   )
 )
