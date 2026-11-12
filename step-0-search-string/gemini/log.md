@@ -23,8 +23,9 @@ TITLE-ABS-KEY(
     "llm*" OR
     "foundation model*" OR
     "chatgpt" OR
-    "gpt-4*" OR
-    "gpt-3.5*" OR
+    "gpt-4" OR
+    "gpt-4o" OR
+    "gpt-3.5" OR
     "claude" OR
     "anthropic" OR
     "gemini" OR
